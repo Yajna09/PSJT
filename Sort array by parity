@@ -1,0 +1,27 @@
+lass Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        int left = 0;
+        int right = nums.length - 1;
+        
+        while (left < right) {
+            // Case A: Left element is already even, move rightward
+            if (nums[left] % 2 == 0) {
+                left++;
+            } 
+            // Case B: Right element is already odd, move leftward
+            else if (nums[right] % 2 != 0) {
+                right--;
+            } 
+            // Case C: Both are misplaced (Left is odd, Right is even), swap them
+            else {
+                int temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+                
+                left++;
+                right--;
+            }
+        }
+        return nums;
+    }
+}
